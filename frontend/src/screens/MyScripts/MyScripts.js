@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainScreen from "../../components/MainScreen/MainScreen";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import entries from "../../data/entries";
+import axios from "axios";
 
 const MyScripts = () => {
+  const [entries, setEntries] = useState([]);
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
+
+  const fetchNotes = async () => {
+    const { data } = await axios.get("/api/entries");
+    setEntries(data);
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
   return (
     <MainScreen title="Welcome bro">
       <Link to="/add-entry">
@@ -24,7 +35,6 @@ const MyScripts = () => {
         <Accordion defaultActiveKey="0" key={entry._id}>
           <Card
             style={{
-              paddingBottom: "10px",
               margin: "10px 10px 15px 10px",
             }}
           >

@@ -2,11 +2,14 @@ const express = require("express");
 const entries = require("./data/entries");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const userRoutes = require("./routes/userRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const app = express();
 dotenv.config();
-
 connectDB();
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("API is running");
@@ -16,10 +19,10 @@ app.get("/api/entries", (req, res) => {
   res.json(entries);
 });
 
-app.get("/api/entries/:id", (req, res) => {
-  const entry = entries.find((e) => e._id === req.params.id);
-  res.send(entry);
-});
+app.use("/api/users", userRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

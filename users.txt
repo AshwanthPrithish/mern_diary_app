@@ -1,0 +1,12 @@
+{
+    "name": "ashwanth",
+    "email": "ashuarul2002@gmail.com",
+    "password": "chumma",
+    "pic": "12ed"
+}
+{
+    "name": "ashwanththeboss",
+    "email": "ashtheboss@gmail.com",
+    "password": "chummathan",
+    "pic": "12ed"
+}

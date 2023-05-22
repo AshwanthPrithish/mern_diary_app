@@ -1,0 +1,23 @@
+.main {
+  background-image: url("../../diary.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.intro-text {
+  width: 130%;
+  text-align: center;
+  background-color: #3b3a3a; /*#636664; #666b67;*/
+  padding: 25px 25px 25px 25px;
+  border-radius: 20px;
+}
+
+.intro-text1 {
+  width: 100%;
+  text-align: center;
+  background-color: #3b3a3a; /*#636664; #666b67;*/
+  padding: 25px 25px 35px 25px;
+  border-radius: 20px;
+  margin-left: 50%;
+}

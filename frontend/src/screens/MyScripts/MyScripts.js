@@ -3,7 +3,7 @@ import MainScreen from "../../components/MainScreen/MainScreen";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import "./MyScripts.css";
 const MyScripts = () => {
   const [entries, setEntries] = useState([]);
   const deleteHandler = (id) => {

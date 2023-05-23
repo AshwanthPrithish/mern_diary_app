@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainScreen from "../../components/MainScreen/MainScreen";
 import "./LoginScreen.css";
 import { Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
@@ -12,15 +12,6 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const userInfo = localStorage.getItem("userInfo");
-    if (userInfo) {
-      navigate("/myscripts");
-    }
-  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();

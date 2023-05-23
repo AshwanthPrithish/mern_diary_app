@@ -7,7 +7,7 @@ const Header = () => {
   const navigate = useNavigate();
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
-    navigate("/login");
+    navigate("/");
   };
   return (
     <>

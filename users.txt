@@ -10,3 +10,18 @@
     "password": "chummathan",
     "pic": "12ed"
 }
+{
+    "name" : "Ashwanth Prithish",
+    "email": "ash1theboss@gmail.com",
+    "password": "chummathan"
+}
+{
+    "name" : "Ashwanth Prithish",
+    "email": "ashwanthprithishrockz@gmail.com",
+    "password": "123"
+}
+{
+    "name" : "Sheldon Cooper",
+    "email": "sheldonmoonpie@meemaw.com",
+    "password": "bazinga"
+}

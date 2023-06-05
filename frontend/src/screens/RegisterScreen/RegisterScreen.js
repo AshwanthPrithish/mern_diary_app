@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainScreen from "../../components/MainScreen/MainScreen";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import "./RegisterScreen.css";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../actions/userActions";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -17,38 +19,27 @@ const RegisterScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loading, error, userInfo } = useSelector(
+    (state) => state.userRegister
+  );
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/myscripts");
+    }
+  }, [navigate, userInfo]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setMessage("Passwords do not match.");
-      console.log(password, confirmPassword);
+      setMessage("Passwords do not match!");
     } else {
-      setMessage(null);
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-        setLoading(true);
-
-        const { data } = await axios.post(
-          "/api/users",
-          { name, pic, email, password },
-          config
-        );
-
-        console.log(data);
-        localStorage.setItem("userInfo", JSON.stringify(data));
-        setLoading(false);
-      } catch (error) {
-        setError(error.response.data.message);
-        setLoading(false);
-      }
+      dispatch(register(name, email, password, pic));
     }
   };
 
@@ -75,6 +66,7 @@ const RegisterScreen = () => {
           console.log(err);
         });
     } else {
+      setPic(null);
       return setPicMessage("Please select Image files only");
     }
   };
@@ -85,7 +77,7 @@ const RegisterScreen = () => {
         {error && <ErrorMessage variant="dark">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="dark">{message}</ErrorMessage>}
         {loading && <Loading />}
-        <div className="intro-text">
+        <div className="intro-text-reg">
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
@@ -144,11 +136,6 @@ const RegisterScreen = () => {
             <Button variant="secondary" type="submit">
               Submit
             </Button>
-            <Link to="/signup">
-              <Button variant="secondary" style={{ marginLeft: "50px" }}>
-                Signup
-              </Button>
-            </Link>
           </Form>
           <br />
           Already Have an Account?

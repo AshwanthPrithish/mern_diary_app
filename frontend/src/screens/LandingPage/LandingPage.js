@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button, Container, Row } from "react-bootstrap";
 import "./LandingPage.css";
 import { useNavigate, useEffect } from "react";
@@ -16,7 +17,7 @@ const LandingPage = () => {
     <div className="main">
       <Container>
         <Row>
-          <div className="intro-text">
+          <div className="intro-text-land">
             <div>
               <h1 className="title">The Realm of Souls Welcomes you!</h1>
               <p className="subtitle">
@@ -26,7 +27,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="buttonContainer">
-              <a href="/login">
+              <Link to="/login">
                 <Button
                   size="lg"
                   className="landingbutton"
@@ -35,8 +36,8 @@ const LandingPage = () => {
                 >
                   Login
                 </Button>
-              </a>
-              <a href="/signup">
+              </Link>
+              <Link to="/signup">
                 <Button
                   size="lg"
                   className="landingbutton"
@@ -45,7 +46,7 @@ const LandingPage = () => {
                 >
                   Signup
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </Row>

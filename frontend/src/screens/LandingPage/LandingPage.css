@@ -15,7 +15,7 @@
   padding-top: 10px;
   color: #d5dbd6;
 }
-.intro-text {
+.intro-text-land {
   width: 100%;
   text-align: center;
   background-color: #3b3a3a; /*#636664; #666b67;*/
@@ -31,4 +31,13 @@
 .landingbutton {
   width: 100px;
   height: 55px;
+}
+
+/* Media Query for Mobile Screens */
+@media only screen and (max-width: 480px) {
+  .intro-text-land {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+  }
 }

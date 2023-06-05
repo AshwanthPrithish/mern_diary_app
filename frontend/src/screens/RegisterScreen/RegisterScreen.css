@@ -1,0 +1,16 @@
+.intro-text-reg {
+  width: 100%;
+  text-align: center;
+  background-color: #3b3a3a; /*#636664; #666b67;*/
+  padding: 25px 25px 35px 25px;
+  border-radius: 20px;
+}
+
+/* Media Query for Mobile Screens */
+@media only screen and (max-width: 480px) {
+  .intro-text-reg {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+}

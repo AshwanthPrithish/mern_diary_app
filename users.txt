@@ -25,3 +25,18 @@
     "email": "sheldonmoonpie@meemaw.com",
     "password": "bazinga"
 }
+{
+    "name" : "Bairava",
+    "email": "therinjaedhiri@gmail.com",
+    "password": "varlaamvaa"
+}
+{
+    "name" : "Theeran",
+    "email": "theeranadhigaaramondru@gmail.com",
+    "password": "rajasthan"
+}
+{
+    "name" : "Theri Baby",
+    "email": "theribaby@gmail.com",
+    "password": "thottatherikka"
+}

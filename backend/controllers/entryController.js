@@ -41,17 +41,18 @@ const updateEntryById = asyncHandler(async (req, res, next) => {
 
   const entry = await Entry.findById(req.params.id);
 
-  if (req.user._id.toString() !== entry.user.toString()) {
-    res.status(401);
-    throw new Error("You cannot perform this action!");
-  }
   if (entry) {
-    entry.title = title;
-    entry.entryContent = entryContent;
-    entry.mood = mood;
+    if (req.user._id.toString() !== entry.user.toString()) {
+      res.status(401);
+      throw new Error("You cannot perform this action!");
+    } else {
+      entry.title = title;
+      entry.entryContent = entryContent;
+      entry.mood = mood;
 
-    const updatedEntry = await entry.save();
-    res.json(updatedEntry);
+      const updatedEntry = await entry.save();
+      res.json(updatedEntry);
+    }
   } else {
     res.status(404);
     throw new Error("Entry not found!");

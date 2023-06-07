@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import MainScreen from "../../components/MainScreen/MainScreen";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import "./MyScripts.css";
+import { listEntries } from "../../actions/entryActions";
+import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
 const MyScripts = () => {
-  const [entries, setEntries] = useState([]);
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
 
-  const fetchNotes = async () => {
-    const { data } = await axios.get("/api/entries");
-    setEntries(data);
-  };
+  const { loading, entries, error } = useSelector((state) => state.entryList);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    dispatch(listEntries());
+  }, [dispatch]);
 
   return (
     <MainScreen title="Welcome bro">
@@ -31,7 +32,9 @@ const MyScripts = () => {
           Add Entry
         </Button>
       </Link>
-      {entries.map((entry) => (
+      {loading && <Loading />}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+      {entries?.map((entry) => (
         <Accordion defaultActiveKey="0" key={entry._id}>
           <Card
             style={{
@@ -76,7 +79,7 @@ const MyScripts = () => {
                   <Badge bg="secondary">Mood - {entry.mood}</Badge>
                 </h4>
                 <blockquote className="blockquote mb-0">
-                  <p>{entry.entry}</p>
+                  <p>{entry.entryContent}</p>
                   <footer className="blockquote-footer">
                     <cite title="Source Title">{entry.date}</cite>
                   </footer>

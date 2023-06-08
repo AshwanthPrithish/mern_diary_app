@@ -8,12 +8,11 @@ const getEntries = asyncHandler(async (req, res) => {
 });
 
 const createEntry = asyncHandler(async (req, res) => {
-  let { title, entryContent, mood, date } = req.body;
-  if (!title || !entryContent || !mood) {
+  const { title, entryContent, mood, date } = req.body;
+  if (!title || !entryContent || !mood || !date) {
     res.status(400);
     throw new Error("Please fill all the required fields");
   } else {
-    date = date ? date : Date();
     const entry = new Entry({
       user: req.user._id,
       title,
@@ -22,7 +21,6 @@ const createEntry = asyncHandler(async (req, res) => {
       date,
     });
     const createdEntry = await entry.save();
-
     res.status(201).json(createdEntry);
   }
 });
@@ -37,7 +35,7 @@ const getEntryById = asyncHandler(async (req, res, next) => {
 });
 
 const updateEntryById = asyncHandler(async (req, res, next) => {
-  const { title, entryContent, mood } = req.body;
+  const { title, entryContent, mood, date } = req.body;
 
   const entry = await Entry.findById(req.params.id);
 
@@ -49,6 +47,7 @@ const updateEntryById = asyncHandler(async (req, res, next) => {
       entry.title = title;
       entry.entryContent = entryContent;
       entry.mood = mood;
+      entry.date = date;
 
       const updatedEntry = await entry.save();
       res.json(updatedEntry);
@@ -67,7 +66,7 @@ const deleteEntryById = asyncHandler(async (req, res, next) => {
       throw new Error("You cannot perform this action!");
     } else {
       const user = entry.user.toString();
-      await Entry.deleteOne({ user: req.user._id.toString() });
+      await entry.deleteOne({ _id: req.params.id });
       res.json({ message: "Entry Removed" });
     }
   } else {

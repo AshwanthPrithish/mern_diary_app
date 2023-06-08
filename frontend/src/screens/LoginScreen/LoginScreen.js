@@ -14,8 +14,9 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loading, error, userInfo } = useSelector((state) => state.userLogin);
+  const userLogin = useSelector((state) => state.userLogin);
 
+  const { loading, error, userInfo } = userLogin;
   useEffect(() => {
     if (userInfo) {
       navigate("/myscripts");

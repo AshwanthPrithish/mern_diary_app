@@ -2,12 +2,20 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
-import { entryListReducer } from "./reducers/entryReducers";
+import {
+  entryCreateReducer,
+  entryDeleteReducer,
+  entryListReducer,
+  entryUpdateReducer,
+} from "./reducers/entryReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   entryList: entryListReducer,
+  entryCreate: entryCreateReducer,
+  entryUpdate: entryUpdateReducer,
+  entryDelete: entryDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

@@ -9,6 +9,7 @@ import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import CreateEntry from "./screens/CreateAndUpdate/CreateEntry";
 import UpdateEntry from "./screens/CreateAndUpdate/UpdateEntry";
 import { useState } from "react";
+import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/" element={<LandingPage />} exact />
           <Route path="/login" element={<LoginScreen />} exact />
           <Route path="/signup" element={<RegisterScreen />} exact />
+          <Route path="/profile" element={<ProfileScreen />} exact />
           <Route path="/create-entry" element={<CreateEntry />} exact />
           <Route path="/entry/:id" element={<UpdateEntry />} exact />
           <Route path="/myscripts" element={<MyScripts search={search} />} />

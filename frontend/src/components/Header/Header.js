@@ -55,7 +55,9 @@ const Header = ({ setSearch }) => {
                   title={`${userInfo.name}`}
                   id="navbarScrollingDropdown"
                 >
-                  <NavDropdown.Item href="#action3">About</NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Link to="/profile">About</Link>
+                  </NavDropdown.Item>
 
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logoutHandler}>

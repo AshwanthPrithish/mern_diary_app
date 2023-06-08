@@ -1,7 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userUpdateReducer,
+} from "./reducers/userReducers";
 import {
   entryCreateReducer,
   entryDeleteReducer,
@@ -12,6 +16,7 @@ import {
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userUpdate: userUpdateReducer,
   entryList: entryListReducer,
   entryCreate: entryCreateReducer,
   entryUpdate: entryUpdateReducer,

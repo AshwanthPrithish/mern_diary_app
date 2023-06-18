@@ -30,11 +30,11 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="main">
+    <div className="main-log">
       <MainScreen title="Login">
         {error && <ErrorMessage variant="dark">{error}</ErrorMessage>}
         {loading && <Loading />}
-        <div className="intro-text">
+        <div className="intro-text-log">
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email Address</Form.Label>
@@ -57,19 +57,27 @@ const LoginScreen = () => {
                 required
               ></Form.Control>
             </Form.Group>
+            <br />
             <div className="buttonContainer">
               <Button
                 variant="secondary"
                 type="submit"
-                className="landingbutton"
+                className="landingbutton-log"
               >
                 Submit
               </Button>
               <Link to="/signup">
                 <Button
                   variant="secondary"
-                  style={{ marginLeft: "30px" }}
-                  className="landingbutton"
+                  className="landingbutton-log"
+                  value="signup"
+                  style={{
+                    ...(window.innerWidth >= 560
+                      ? { marginLeft: "15px" }
+                      : window.innerWidth <= 560
+                      ? { marginTop: "10px" }
+                      : {}),
+                  }}
                 >
                   Signup
                 </Button>

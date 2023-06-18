@@ -1,4 +1,4 @@
-.main {
+.main-land {
   min-height: 93vh;
   display: flex;
   align-items: center;
@@ -7,10 +7,10 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
-.title {
+.title-land {
   font-size: 40px;
 }
-.subtitle {
+.subtitle-land {
   font-size: 25px;
   padding-top: 10px;
   color: #d5dbd6;
@@ -18,26 +18,47 @@
 .intro-text-land {
   width: 100%;
   text-align: center;
-  background-color: #3b3a3a; /*#636664; #666b67;*/
+  background-color: #3b3a3a;
   padding: 25px 25px 35px 25px;
   border-radius: 20px;
 }
 
-.buttonContainer {
+.buttonContainer-land {
   margin-top: 50px;
   justify-content: space-evenly;
 }
 
-.landingbutton {
+.landingbutton-land {
   width: 100px;
   height: 55px;
 }
 
 /* Media Query for Mobile Screens */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 490px) {
   .intro-text-land {
     width: 90%;
-    margin: 0 auto;
+    font-size: 10px;
+    margin: 10px auto;
     padding: 15px;
+  }
+  .title-land {
+    font-size: 30px;
+  }
+  .subtitle-land {
+    font-size: 20px;
+    padding-top: 10px;
+    color: #d5dbd6;
+  }
+
+  .buttonContainer-land {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landingbutton-land {
+    width: 40%;
+    margin-bottom: 10px;
+    width: 60%;
+    height: 40%;
   }
 }

@@ -24,6 +24,21 @@ const MyScripts = ({ search }) => {
     success: successDelete,
   } = entryDelete;
 
+  const getFormattedDate = (e) => {
+    const date = new Date(e);
+    return `${date.getDate().toString().padStart(2, "0")}/${(
+      date.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}/${date.getFullYear()} ${date
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date
+      .getSeconds()
+      .toString()
+      .padStart(2, "0")}`;
+  };
+
   const deleteHandler = (id) => {
     return () => {
       if (window.confirm("Are you sure?")) {
@@ -95,7 +110,18 @@ const MyScripts = ({ search }) => {
                   </Link>
                   <Button
                     variant="dark"
-                    className="mx-2"
+                    // style={{
+                    //   ...(window.innerWidth >= 370
+                    //     ? { marginLeft: "15px" }
+                    //     : window.innerWidth <= 350
+                    //     ? { marginTop: "10px" }
+                    //     : {}),
+                    //   display: "flex",
+                    //   flexDirection: "column",
+                    //   alignItems: "center",
+                    //   fontSize: "12px",
+                    // }}
+                    style={{ marginLeft: "10px" }}
                     onClick={deleteHandler(entry._id)}
                   >
                     Delete
@@ -110,7 +136,9 @@ const MyScripts = ({ search }) => {
                   <blockquote className="blockquote mb-0">
                     <p>{entry.entryContent}</p>
                     <footer className="blockquote-footer">
-                      <cite title="Source Title">{entry.date}</cite>
+                      <cite title="Source Title">
+                        {getFormattedDate(entry.date)}
+                      </cite>
                     </footer>
                   </blockquote>
                 </Card.Body>

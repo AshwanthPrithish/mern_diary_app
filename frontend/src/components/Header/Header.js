@@ -56,7 +56,7 @@ const Header = ({ setSearch }) => {
                   id="navbarScrollingDropdown"
                 >
                   <NavDropdown.Item>
-                    <Link to="/profile">About</Link>
+                    <Link to="/profile">Edit Profile</Link>
                   </NavDropdown.Item>
 
                   <NavDropdown.Divider />

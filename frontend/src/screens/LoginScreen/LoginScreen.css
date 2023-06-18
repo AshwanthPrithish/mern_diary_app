@@ -1,23 +1,60 @@
-.main {
+.main-log {
   background-image: url("../../diary.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  display: flex;
 }
 
-.intro-text {
+.intro-text-log {
   width: 130%;
   text-align: center;
-  background-color: #3b3a3a; /*#636664; #666b67;*/
+  background-color: #3b3a3a;
   padding: 25px 25px 25px 25px;
   border-radius: 20px;
 }
 
-.intro-text1 {
-  width: 100%;
-  text-align: center;
-  background-color: #3b3a3a; /*#636664; #666b67;*/
-  padding: 25px 25px 35px 25px;
-  border-radius: 20px;
-  margin-left: 50%;
+@media only screen and (max-width: 560px) {
+  .intro-text-log {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  .buttonContainer-land {
+    margin-top: 50px;
+    justify-content: space-evenly;
+  }
+
+  .landingbutton-land {
+    width: 100px;
+    margin-bottom: 10px;
+    font-style: italic;
+    height: 55px;
+  }
+  @media only screen and (max-width: 576px) {
+    .intro-text {
+      width: 80%;
+      margin: 0 auto;
+      font-size: 10px;
+    }
+
+    .buttonContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    .landingButton-log {
+      width: 75%;
+      margin-bottom: 10px;
+    }
+  }
 }
